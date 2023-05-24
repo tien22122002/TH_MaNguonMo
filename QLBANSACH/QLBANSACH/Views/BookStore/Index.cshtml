@@ -1,0 +1,62 @@
+﻿@using QLBANSACH.Models;
+@using PagedList.Mvc;
+@model PagedList.PagedList<SACH>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
+}
+
+<h2 style="padding-top: 20px;">Sách mới</h2>
+<div class="row">
+    @foreach (var sach in Model)
+    {
+        <div class="col-sm-4 col-lg-4 col-md-4">
+            <ul class="product_box">
+                <a href="@Url.Action("Details", "BookStore", new { id = sach.Masach })">
+                    <div class="hinhanh_sanpham">
+                        <img alt="@sach.Tensach" src="~/image/@sach.Anhbia" width="100%" />
+                    </div>
+                    <div>
+                        <br />
+                        <h4 style="height:40px;">
+                            @sach.Tensach
+                        </h4>
+
+                        <p></p>
+                        <div class="ratings">
+                            <p class="pull-right">16 reviews</p>
+                            <p style="color: #ff8b00;">
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+
+                            </p>
+                        </div>
+                    </div>
+                </a>
+            </ul>
+        </div>
+    }
+</div>
+<div style="text-align: center; margin-left: 260px;">
+    Trang @(Model.PageCount<Model.PageNumber?0:Model.PageNumber)/@Model.PageCount
+</div>
+<div class="MenuTrang">
+    @Html.PagedListPager(Model, page=>Url.Action ("Index", new {page=page}))
+</div>
+<style>
+    .MenuTrang {
+        text-align: center;
+        margin-left: 260px;
+        margin-top: 20px;
+        margin-bottom: 40px;
+    }
+    .MenuTrang li {
+        display: inline;
+        border: 1px solid;
+        padding: 10px;
+    }
+</style>
+

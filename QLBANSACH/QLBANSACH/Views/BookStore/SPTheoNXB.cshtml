@@ -1,0 +1,40 @@
+﻿@model IEnumerable<QLBANSACH.Models.SACH>
+@{
+    ViewBag.Title = "SPTheochude";
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
+}
+
+<h3 style="text-align: center; color:red;">SÁCH THEO NHÀ XUẤT BẢN</h3>
+<div class="row">
+    @foreach (var sach in Model)
+    {
+        <div class="col-sm-4 col-lg-4 col-md-4">
+            <ul class="product_box">
+                <a href="@Url.Action("Details", "BookStore", new { id = sach.Masach })">
+                    <div class="hinhanh_sanpham">
+                        <img alt="@sach.Tensach" src="~/image/@sach.Anhbia" width="100%" />
+                    </div>
+                    <div>
+                        <br />
+                        <h4 style="height:40px;">
+                            @sach.Tensach
+                        </h4>
+
+                        <p></p>
+                        <div class="ratings">
+                            <p class="pull-right">16 reviews</p>
+                            <p style="color: #ff8b00;">
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+
+                            </p>
+                        </div>
+                    </div>
+            </ul>
+        </div>
+    }
+</div>
+
